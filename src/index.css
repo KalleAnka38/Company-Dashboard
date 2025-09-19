@@ -1,0 +1,77 @@
+/* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+/* Modern Design System */
+/* Typography */
+@layer base {
+  html {
+    @apply text-gray-100;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  h1 {
+    @apply text-2xl md:text-3xl;
+  }
+  h2 {
+    @apply text-xl md:text-2xl;
+  }
+  h3 {
+    @apply text-lg md:text-xl;
+  }
+}
+/* Animation utilities */
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+  .animate-scaleIn {
+    animation: scaleIn 0.3s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scaleIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+}
+/* Custom button styles */
+.btn {
+  @apply font-medium rounded-lg transition-all duration-200 shadow-sm inline-flex items-center justify-center;
+}
+.btn-primary {
+  @apply bg-emerald-600 hover:bg-emerald-500 text-white;
+}
+.btn-secondary {
+  @apply bg-gray-800 hover:bg-gray-700 text-gray-300;
+}
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-500 text-white;
+}
+/* Custom form styles */
+.form-input {
+  @apply w-full bg-gray-800 border border-gray-700 focus:border-emerald-500 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-500 transition-colors duration-200 focus:ring-1 focus:ring-emerald-500 focus:outline-none;
+}
+.form-select {
+  @apply w-full bg-gray-800 border border-gray-700 focus:border-emerald-500 rounded-lg px-4 py-2.5 text-sm text-white appearance-none transition-colors duration-200 focus:ring-1 focus:ring-emerald-500 focus:outline-none;
+}
+.form-checkbox {
+  @apply h-4 w-4 text-emerald-500 rounded border-gray-600 focus:ring-emerald-500 focus:ring-opacity-50 bg-gray-700;
+}
+/* Card styles */
+.card {
+  @apply bg-gray-900 rounded-xl border border-gray-800 shadow-lg overflow-hidden;
+}
+.card-header {
+  @apply p-6 border-b border-gray-800;
+}
+.card-body {
+  @apply p-6;
+}
+.card-footer {
+  @apply p-6 border-t border-gray-800;
+}

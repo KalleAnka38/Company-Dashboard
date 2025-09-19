@@ -1,0 +1,253 @@
+import { Company, SavedView } from './types';
+
+// Generate mock company data
+export const mockCompanies: Company[] = [{
+  id: 1,
+  name: 'FlowForge',
+  sector: 'B2B SaaS',
+  website: 'https://flowforge.com',
+  employees: 180,
+  growth_rate: 32,
+  recent_funding: true,
+  stale_design: true,
+  clarity_score: 4,
+  churn_indicators: 2,
+  hq: 'Austin, TX',
+  last_updated: '2023-05-15',
+  created_at: '2022-03-10T10:00:00Z',
+  updated_at: '2023-05-15T14:30:00Z'
+}, {
+  id: 2,
+  name: 'DataSync',
+  sector: 'Data Analytics',
+  website: 'https://datasync.io',
+  employees: 85,
+  growth_rate: 28,
+  recent_funding: false,
+  stale_design: true,
+  clarity_score: 6,
+  churn_indicators: 1,
+  hq: 'Boston, MA',
+  last_updated: '2023-06-20',
+  created_at: '2021-11-05T09:15:00Z',
+  updated_at: '2023-06-20T11:45:00Z'
+}, {
+  id: 3,
+  name: 'CloudPulse',
+  sector: 'DevOps',
+  website: 'https://cloudpulse.dev',
+  employees: 120,
+  growth_rate: 40,
+  recent_funding: true,
+  stale_design: false,
+  clarity_score: 3,
+  churn_indicators: 0,
+  hq: 'San Francisco, CA',
+  last_updated: '2023-07-12',
+  created_at: '2022-01-20T08:30:00Z',
+  updated_at: '2023-07-12T16:20:00Z'
+}, {
+  id: 4,
+  name: 'SecureEdge',
+  sector: 'Cybersecurity',
+  website: 'https://secureedge.com',
+  employees: 250,
+  growth_rate: 35,
+  recent_funding: true,
+  stale_design: false,
+  clarity_score: 2,
+  churn_indicators: 1,
+  hq: 'Seattle, WA',
+  last_updated: '2023-06-30',
+  created_at: '2021-08-15T13:45:00Z',
+  updated_at: '2023-06-30T09:10:00Z'
+}, {
+  id: 5,
+  name: 'MarketMesh',
+  sector: 'MarTech',
+  website: 'https://marketmesh.co',
+  employees: 65,
+  growth_rate: 22,
+  recent_funding: false,
+  stale_design: true,
+  clarity_score: 7,
+  churn_indicators: 2,
+  hq: 'Chicago, IL',
+  last_updated: '2023-05-28',
+  created_at: '2022-04-10T11:20:00Z',
+  updated_at: '2023-05-28T15:40:00Z'
+}, {
+  id: 6,
+  name: 'HealthTrack',
+  sector: 'HealthTech',
+  website: 'https://healthtrack.care',
+  employees: 310,
+  growth_rate: 45,
+  recent_funding: true,
+  stale_design: false,
+  clarity_score: 5,
+  churn_indicators: 0,
+  hq: 'Denver, CO',
+  last_updated: '2023-07-05',
+  created_at: '2021-10-22T10:30:00Z',
+  updated_at: '2023-07-05T12:15:00Z'
+}, {
+  id: 7,
+  name: 'RetailAI',
+  sector: 'Retail Tech',
+  website: 'https://retailai.store',
+  employees: 95,
+  growth_rate: 30,
+  recent_funding: true,
+  stale_design: true,
+  clarity_score: 4,
+  churn_indicators: 1,
+  hq: 'New York, NY',
+  last_updated: '2023-06-15',
+  created_at: '2022-02-18T09:45:00Z',
+  updated_at: '2023-06-15T14:50:00Z'
+}, {
+  id: 8,
+  name: 'FinStack',
+  sector: 'FinTech',
+  website: 'https://finstack.money',
+  employees: 140,
+  growth_rate: 38,
+  recent_funding: false,
+  stale_design: false,
+  clarity_score: 3,
+  churn_indicators: 0,
+  hq: 'Miami, FL',
+  last_updated: '2023-07-01',
+  created_at: '2021-12-05T14:10:00Z',
+  updated_at: '2023-07-01T10:35:00Z'
+}, {
+  id: 9,
+  name: 'EduSphere',
+  sector: 'EdTech',
+  website: 'https://edusphere.edu',
+  employees: 75,
+  growth_rate: 25,
+  recent_funding: false,
+  stale_design: true,
+  clarity_score: 6,
+  churn_indicators: 1,
+  hq: 'Portland, OR',
+  last_updated: '2023-05-22',
+  created_at: '2022-03-30T08:55:00Z',
+  updated_at: '2023-05-22T11:25:00Z'
+}, {
+  id: 10,
+  name: 'LogisticLink',
+  sector: 'Supply Chain',
+  website: 'https://logisticlink.io',
+  employees: 220,
+  growth_rate: 32,
+  recent_funding: true,
+  stale_design: false,
+  clarity_score: 4,
+  churn_indicators: 2,
+  hq: 'Atlanta, GA',
+  last_updated: '2023-06-25',
+  created_at: '2021-09-12T13:20:00Z',
+  updated_at: '2023-06-25T16:05:00Z'
+}, {
+  id: 11,
+  name: 'GreenEnergy',
+  sector: 'CleanTech',
+  website: 'https://greenenergy.eco',
+  employees: 130,
+  growth_rate: 42,
+  recent_funding: true,
+  stale_design: false,
+  clarity_score: 3,
+  churn_indicators: 0,
+  hq: 'Austin, TX',
+  last_updated: '2023-07-10',
+  created_at: '2022-01-15T10:40:00Z',
+  updated_at: '2023-07-10T15:15:00Z'
+}, {
+  id: 12,
+  name: 'TravelTech',
+  sector: 'Travel',
+  website: 'https://traveltech.trips',
+  employees: 85,
+  growth_rate: 20,
+  recent_funding: false,
+  stale_design: true,
+  clarity_score: 7,
+  churn_indicators: 3,
+  hq: 'San Diego, CA',
+  last_updated: '2023-05-18',
+  created_at: '2022-04-05T09:30:00Z',
+  updated_at: '2023-05-18T12:50:00Z'
+}, {
+  id: 13,
+  name: 'MediaStream',
+  sector: 'Media',
+  website: 'https://mediastream.video',
+  employees: 110,
+  growth_rate: 35,
+  recent_funding: true,
+  stale_design: false,
+  clarity_score: 4,
+  churn_indicators: 1,
+  hq: 'Los Angeles, CA',
+  last_updated: '2023-06-28',
+  created_at: '2021-11-20T11:15:00Z',
+  updated_at: '2023-06-28T14:40:00Z'
+}, {
+  id: 14,
+  name: 'AgriTech',
+  sector: 'Agriculture',
+  website: 'https://agritech.farm',
+  employees: 70,
+  growth_rate: 28,
+  recent_funding: false,
+  stale_design: true,
+  clarity_score: 5,
+  churn_indicators: 0,
+  hq: 'Des Moines, IA',
+  last_updated: '2023-05-30',
+  created_at: '2022-03-25T08:20:00Z',
+  updated_at: '2023-05-30T10:55:00Z'
+}, {
+  id: 15,
+  name: 'LegalEase',
+  sector: 'LegalTech',
+  website: 'https://legalease.law',
+  employees: 55,
+  growth_rate: 18,
+  recent_funding: false,
+  stale_design: true,
+  clarity_score: 8,
+  churn_indicators: 2,
+  hq: 'Washington, DC',
+  last_updated: '2023-06-05',
+  created_at: '2022-02-10T13:35:00Z',
+  updated_at: '2023-06-05T15:30:00Z'
+}];
+
+// Generate mock saved views
+export const mockSavedViews: SavedView[] = [{
+  id: 1,
+  name: 'High Growth B2B',
+  querystring: 'sectors=B2B%20SaaS&growth_min=30&sort_by=growth_rate',
+  created_at: '2023-06-10T09:15:00Z'
+}, {
+  id: 2,
+  name: 'Stale Design Opportunities',
+  querystring: 'only_stale=true&min_score=60&w_stale=2.5',
+  created_at: '2023-06-15T14:30:00Z'
+}, {
+  id: 3,
+  name: 'Funded Startups',
+  querystring: 'only_funding=true&employees_max=200',
+  created_at: '2023-06-20T11:45:00Z'
+}];
+
+// Get all available sectors from mock data
+export const getAllSectors = (): string[] => {
+  const sectors = new Set(mockCompanies.map(company => company.sector));
+  return Array.from(sectors);
+};

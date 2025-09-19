@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Robinhood-inspired styles */
+body {
+  @apply bg-black text-white;
+}
+.robinhood-card {
+  @apply bg-gray-900 rounded-xl border border-gray-800 shadow-lg overflow-hidden;
+}
+.robinhood-button-primary {
+  @apply bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors;
+}
+.robinhood-button-secondary {
+  @apply bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg font-medium transition-colors;
+}
+.robinhood-button-danger {
+  @apply bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors;
+}
+.robinhood-input {
+  @apply bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-green-500 focus:border-green-500;
+}
+.positive-value {
+  @apply text-green-500;
+}
+.negative-value {
+  @apply text-red-500;
+}
+.neutral-value {
+  @apply text-gray-400;
+}

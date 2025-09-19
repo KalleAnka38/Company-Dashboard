@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = env("PRISMA_PROVIDER")
+  url      = env("DATABASE_URL")
+}
+model Company {
+  id               Int      @id @default(autoincrement())
+  name             String   @unique
+  sector           String
+  website          String?
+  employees        Int      @default(0)
+  growth_rate      Float    @default(0)
+  recent_funding   Boolean  @default(false)
+  stale_design     Boolean  @default(false)
+  clarity_score    Float    @default(0)
+  churn_indicators Int      @default(0)
+  hq               String?
+  last_updated     String?
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+}
+model SavedView {
+  id          Int      @id @default(autoincrement())
+  name        String
+  querystring String
+  created_at  DateTime @default(now())
+}
