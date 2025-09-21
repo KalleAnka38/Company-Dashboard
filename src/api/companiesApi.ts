@@ -1,5 +1,6 @@
 // src/api/companiesApi.ts
-import { supabase } from '@/lib/supabaseClient';   // ✅ use alias + named import
+// src/api/companiesApi.ts
+import { supabase } from '@/lib/supabase/client';
 import { logSecurityEvent } from '@/lib/security/logger';
 import { Company, FilterParams, SavedView } from '@/utils/types';
 import { applyFilters, calculateScore } from '@/utils/scoring';
