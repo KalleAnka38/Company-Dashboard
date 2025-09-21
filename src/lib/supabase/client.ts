@@ -2,6 +2,8 @@
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { logSecurityEvent } from '../security/logger';
 import { Database } from './database.types';
+import { supabase } from '@/lib/supabaseClient';
+
 
 /**
  * Supabase Setup
