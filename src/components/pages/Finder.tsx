@@ -119,9 +119,14 @@ export const Finder: React.FC = () => {
     fetchCompaniesWithFilters(defaultFilters);
   };
   const handleExportCsv = () => {
-    exportToCsv(filters);
-    toast.success('Exporting CSV...');
-  };
+  if (companies.length === 0) {
+    toast.warn('No companies to export');
+    return;
+  }
+  exportToCsv(companies);
+  toast.success('Exporting CSV...');
+};
+
   const handleSaveView = () => {
     setIsModalOpen(true);
   };
