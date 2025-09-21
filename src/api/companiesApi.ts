@@ -1,10 +1,9 @@
-// src/api/companiesApi.ts (top of file)
-
+// src/api/companiesApi.ts
+import { supabase } from '@/lib/supabaseClient';   // ✅ use named import
+import { logSecurityEvent } from '@/lib/security/logger';
 import { Company, FilterParams, SavedView } from '@/utils/types';
 import { applyFilters, calculateScore } from '@/utils/scoring';
 import { mockCompanies, mockSavedViews } from '@/utils/mockData';
-import { supabase } from '@/lib/supabaseClient';
-import { logSecurityEvent } from '@/lib/security/logger';
 
 // API Key (for Crunchbase or other APIs if needed)
 const API_KEY = import.meta.env.VITE_CRUNCHBASE_API_KEY;
