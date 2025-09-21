@@ -1,31 +1,42 @@
+// src/lib/supabaseClient.ts
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { logSecurityEvent } from '../security/logger';
 import { Database } from './database.types';
-// Option 1: Hardcoded values (safer for client-side code)
-const supabaseUrl = 'https://oxmikdfvvoadhkbjjnyz.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94bWlrZGZ2dm9hZGhrYmpqbnl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcwOTYwNjEsImV4cCI6MjA3MjY3MjA2MX0.Vv4o5bybkkDNPHO3IlwCwDztj9UiepVCBtSIpJST2pE';
-// Validate configuration
-if (!supabaseUrl.includes('supabase.co') || !supabaseAnonKey.startsWith('eyJ')) {
-  console.warn('Supabase configuration not properly set. Using mock/development mode.');
+
+/**
+ * Supabase Setup
+ * Reads from VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
+ * Make sure you set these in .env.local (for dev)
+ * and in Vercel project settings (for production).
+ */
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('⚠️ Supabase configuration missing. Did you set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY?');
 }
-// Create a singleton instance
+
+// Singleton Supabase client
 export const supabase = createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
     detectSessionInUrl: true,
-    flowType: 'pkce'
-  }
+    flowType: 'pkce',
+  },
 });
-// Create a function to create a Supabase client (for cases where you need a fresh instance)
-export const createClient = () => createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: true,
-    flowType: 'pkce'
-  }
-});
+
+// Factory for fresh clients (rarely needed)
+export const createClient = () =>
+  createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+      flowType: 'pkce',
+    },
+  });
+
 // Log authentication events
 supabase.auth.onAuthStateChange((event, session) => {
   logSecurityEvent({
@@ -34,12 +45,13 @@ supabase.auth.onAuthStateChange((event, session) => {
     message: `Auth state changed: ${event}`,
     data: {
       event,
-      userId: session?.user?.id
-    }
+      userId: session?.user?.id,
+    },
   });
 });
+
 /**
- * Helper function to handle Supabase errors
+ * Helper function to handle Supabase errors consistently
  */
 export function handleSupabaseError(error: any, context: string): never {
   logSecurityEvent({
@@ -48,8 +60,18 @@ export function handleSupabaseError(error: any, context: string): never {
     message: `Supabase error in ${context}`,
     data: {
       error: error.message,
-      code: error.code
-    }
+      code: error.code,
+    },
   });
   throw new Error(`${context}: ${error.message}`);
+}
+
+/**
+ * Crunchbase Key Setup (for API fallback / live data)
+ * Reads from VITE_CRUNCHBASE_API_KEY
+ */
+export const crunchbaseKey = import.meta.env.VITE_CRUNCHBASE_API_KEY as string;
+
+if (!crunchbaseKey) {
+  console.warn('⚠️ Missing VITE_CRUNCHBASE_API_KEY. Crunchbase fallback will not work until you set it.');
 }
