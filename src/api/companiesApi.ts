@@ -1,11 +1,14 @@
-import { Company, FilterParams, SavedView } from '../utils/types';
-import { applyFilters, calculateScore } from '../utils/scoring';
-import { mockCompanies, mockSavedViews } from '../utils/mockData';
-import { supabase } from '../lib/supabaseClient';
-import { logSecurityEvent } from '../lib/security/logger';
+// src/api/companiesApi.ts (top of file)
+
+import { Company, FilterParams, SavedView } from '@/utils/types';
+import { applyFilters, calculateScore } from '@/utils/scoring';
+import { mockCompanies, mockSavedViews } from '@/utils/mockData';
+import { supabase } from '@/lib/supabaseClient';
+import { logSecurityEvent } from '@/lib/security/logger';
 
 // API Key (for Crunchbase or other APIs if needed)
 const API_KEY = import.meta.env.VITE_CRUNCHBASE_API_KEY;
+
 
 // =============================
 // Fetch Companies with Filters
