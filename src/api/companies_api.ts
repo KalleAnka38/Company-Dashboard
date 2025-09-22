@@ -102,6 +102,34 @@ export const createSavedView = async (view: SavedView) => {
     return mockSavedViews;
   }
 };
+// =============================
+// Fetch Saved Views
+// =============================
+export const fetchSavedViews = async (): Promise<SavedView[]> => {
+  try {
+    const { data, error } = await supabase.from('saved_views').select('*');
+    if (error) throw error;
+    return data as SavedView[];
+  } catch (err) {
+    console.error('Error fetching saved views:', err);
+    return mockSavedViews; // fallback
+  }
+};
+
+// =============================
+// Delete Saved View
+// =============================
+export const deleteSavedView = async (id: string) => {
+  try {
+    const { error } = await supabase.from('saved_views').delete().eq('id', id);
+    if (error) throw error;
+    return true;
+  } catch (err) {
+    console.error('Error deleting saved view:', err);
+    return false;
+  }
+};
+
 // Bulk Upload helper for /pages/Upload.tsx
 export type BulkUploadResult = {
   inserted: number;
