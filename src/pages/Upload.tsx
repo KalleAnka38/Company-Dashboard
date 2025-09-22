@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { UploadIcon, FileTextIcon, FileJsonIcon, CheckCircleIcon } from 'lucide-react';
-import { bulkUpload } from '../api/companiesApi';
+import { bulkUpload } from '../api/companies_api';
 
 export const Upload: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
