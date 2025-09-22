@@ -102,3 +102,27 @@ export const createSavedView = async (view: SavedView) => {
     return mockSavedViews;
   }
 };
+// Bulk Upload helper for /pages/Upload.tsx
+export type BulkUploadResult = {
+  inserted: number;
+  updated?: number;
+  skipped?: number;
+  errors?: string[];
+};
+
+export async function bulkUpload(file: File): Promise<BulkUploadResult> {
+  const form = new FormData();
+  form.append('file', file);
+
+  const res = await fetch('/api/bulk', {
+    method: 'POST',
+    body: form,
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(text || `Bulk upload failed with ${res.status}`);
+  }
+
+  return res.json();
+}
