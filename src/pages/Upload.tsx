@@ -63,7 +63,7 @@ export const Upload: React.FC = () => {
 
     setUploading(true);
     try {
-      // Your companiesApi.ts returns: { inserted, updated?, ... }
+      // Your companies_api.ts returns: { inserted, updated?, ... }
       const result = await bulkUpload(file);
 
       const created = result?.inserted ?? 0;
