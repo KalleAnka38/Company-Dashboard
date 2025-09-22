@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { BookmarkIcon, TrashIcon, ExternalLinkIcon } from 'lucide-react';
 import { SavedView } from '../utils/types';
-import { fetchSavedViews, deleteSavedView } from '../api/companiesApi';
+import { fetchSavedViews, deleteSavedView } from '../api/companies_api';
 export const Views: React.FC = () => {
   const [views, setViews] = useState<SavedView[]>([]);
   const [loading, setLoading] = useState(true);

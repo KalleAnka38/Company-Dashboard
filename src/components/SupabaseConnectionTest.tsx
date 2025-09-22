@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase/client';
-import { checkApiHealth } from '../api/companiesApi';
+import { checkApiHealth } from '../api/companies_api';
 import { CheckCircleIcon, XCircleIcon, AlertCircleIcon, DatabaseIcon, RefreshCwIcon } from 'lucide-react';
 export const SupabaseConnectionTest: React.FC = () => {
   const [connectionStatus, setConnectionStatus] = useState<'loading' | 'connected' | 'error'>('loading');

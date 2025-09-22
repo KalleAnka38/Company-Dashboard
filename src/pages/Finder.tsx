@@ -5,7 +5,7 @@ import { FilterPanel } from '../components/FilterPanel';
 import { CompanyTable } from '../components/CompanyTable';
 import { SaveViewModal } from '../components/SaveViewModal';
 import { FilterParams, Company } from '../utils/types';
-import { fetchCompanies, exportToCsv, createSavedView } from '../api/companiesApi';
+import { fetchCompanies, exportToCsv, createSavedView } from '../api/companies_api';
 export const Finder: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters, setFilters] = useState<FilterParams>({

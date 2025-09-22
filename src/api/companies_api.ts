@@ -1,4 +1,4 @@
-// src/api/companiesApi.ts
+// s../api/companies_api.ts
 import { supabase } from '@/lib/supabase/client';
 import { logSecurityEvent } from '@/lib/security/logger';
 import { Company, FilterParams, SavedView } from '@/utils/types';
