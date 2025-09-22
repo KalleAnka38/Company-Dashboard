@@ -169,4 +169,3 @@ export const checkApiHealth = async (): Promise<boolean> => {
     return false;
   }
 };
-
