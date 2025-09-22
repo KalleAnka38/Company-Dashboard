@@ -8,7 +8,6 @@ import { mockCompanies, mockSavedViews } from '@/utils/mockData';
 // API Key (for Crunchbase or other APIs if needed)
 const API_KEY = import.meta.env.VITE_CRUNCHBASE_API_KEY;
 
-
 // =============================
 // Fetch Companies with Filters
 // =============================
