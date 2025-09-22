@@ -153,3 +153,20 @@ export async function bulkUpload(file: File): Promise<BulkUploadResult> {
 
   return res.json();
 }
+// =============================
+// API Health Check
+// =============================
+export const checkApiHealth = async (): Promise<boolean> => {
+  try {
+    const { error } = await supabase.from('companies').select('id').limit(1);
+    if (error) {
+      console.error('Supabase health check failed:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Error during Supabase health check:', err);
+    return false;
+  }
+};
+
